@@ -13,6 +13,7 @@
   limitations under the License.
 */
 
+#include <string>
 #include "PaContext.h"
 #include "Params.h"
 #include "Chunks.h"

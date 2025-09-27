@@ -20,7 +20,7 @@ Install [Node.js](http://nodejs.org/) for your platform and make sure that node 
 
 Naudiodon is designed to be `require`d to use from your own application to provide async processing. For example:
 
-    npm install naudiodon
+    npm install underswing/naudiodon
 
 For Raspberry Pi users, please note that this library is not intended for use with the internal sound card. Please use an external USB sound card or GPIO breakout board such as the [_Pi-DAC+ Full-HD Audio Card_](https://www.modmypi.com/raspberry-pi/breakout-boards/iqaudio/pi-dac-plus-full-hd-audio-card/?tag=pi-dac).
 

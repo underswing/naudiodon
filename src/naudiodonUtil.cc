@@ -142,7 +142,7 @@ int32_t rejectStatus(napi_env env, carrier* c, char* file, int32_t line) {
     status = napi_reject_deferred(env, c->_deferred, errorValue);
     FLOATING_STATUS;
 
-    delete[] extMsg;
+    free(extMsg);
     tidyCarrier(env, c);
   }
   return c->status;
