@@ -1,6 +1,6 @@
 {
   "name": "@underswing/naudiodon",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "description": "Node Stream bindings for PortAudio.",
   "main": "./index.js",
   "types": "./index.d.ts",
