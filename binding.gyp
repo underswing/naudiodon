@@ -71,60 +71,54 @@
         [
           'OS=="linux"', {
             "conditions": [
-              ['target_arch=="arm"', {
-                "cflags_cc!": [
-                  "-fno-rtti",
-                  "-fno-exceptions"
-                ],
-                "cflags_cc": [
-                  "-std=c++11",
-                  "-fexceptions"
-                ],
-                "link_settings": {
-                  "libraries": [
-                    "<@(module_root_dir)/build/Release/libportaudio.so.2" 
-                  ],
-                  "ldflags": [
-                    "-L<@(module_root_dir)/build/Release",
-                    "-Wl,-rpath,<@(module_root_dir)/build/Release"
+              [
+                'target_arch=="arm"', {
+                  "cflags_cc!": ["-fno-rtti", "-fno-exceptions"],
+                  "cflags_cc": ["-std=c++11", "-fexceptions"],
+                  "link_settings": {
+                    "libraries": ["<@(module_root_dir)/build/Release/libportaudio.so.2"],
+                    "ldflags": ["-L<@(module_root_dir)/build/Release", "-Wl,-rpath,<@(module_root_dir)/build/Release"]
+                  },
+                  "copies": [
+                    {
+                      "destination": "build/Release/",
+                      "files": ["<@(module_root_dir)/portaudio/bin_armhf/libportaudio.so.2"]
+                    }
                   ]
-                },
-                "copies": [
-                  {
-                    "destination": "build/Release/",
-                    "files": [
-                      "<@(module_root_dir)/portaudio/bin_armhf/libportaudio.so.2"
-                    ]
-                  }
-                ]
-              },
-              { # ia32 or x64
-                "cflags_cc!": [
-                  "-fno-rtti",
-                  "-fno-exceptions"
-                 ],
-                 "cflags_cc": [
-                   "-std=c++11",
-                   "-fexceptions"
-                 ],
-                "link_settings": {
-                  "libraries": [
-                    "<@(module_root_dir)/build/Release/libportaudio.so.2"
-                  ],
-                  "ldflags": [
-                  "-L<@(module_root_dir)/build/Release",
-                  "-Wl,-rpath,<@(module_root_dir)/build/Release"
+                }
+              ],
+              [
+                'target_arch=="arm64"', {
+                  "cflags_cc!": ["-fno-rtti", "-fno-exceptions"],
+                  "cflags_cc": ["-std=c++11", "-fexceptions"],
+                  "link_settings": {
+                    "libraries": ["<@(module_root_dir)/build/Release/libportaudio.so.2"],
+                    "ldflags": ["-L<@(module_root_dir)/build/Release", "-Wl,-rpath,<@(module_root_dir)/build/Release"]
+                  },
+                  "copies": [
+                    {
+                      "destination": "build/Release/",
+                      "files": ["<@(module_root_dir)/portaudio/bin_arm64/libportaudio.so.2"]
+                    }
                   ]
-                },
-                "copies": [
-                  {
-                    "destination": "build/Release/",
-                    "files": [
-                      "<@(module_root_dir)/portaudio/bin/libportaudio.so.2"
-                    ]
-                  }
-                ]
-              }]
+                }
+              ],
+              [
+                'target_arch=="x64" or target_arch=="ia32"', {
+                  "cflags_cc!": ["-fno-rtti", "-fno-exceptions"],
+                  "cflags_cc": ["-std=c++11", "-fexceptions"],
+                  "link_settings": {
+                    "libraries": ["<@(module_root_dir)/build/Release/libportaudio.so.2"],
+                    "ldflags": ["-L<@(module_root_dir)/build/Release", "-Wl,-rpath,<@(module_root_dir)/build/Release"]
+                  },
+                  "copies": [
+                    {
+                      "destination": "build/Release/",
+                      "files": ["<@(module_root_dir)/portaudio/bin/libportaudio.so.2"]
+                    }
+                  ]
+                }
+              ]
             ]
           }
         ]
